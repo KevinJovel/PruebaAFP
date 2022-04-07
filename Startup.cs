@@ -8,7 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using PruebaTecnicaAFP.Intefaces;
 using PruebaTecnicaAFP.Models;
+using PruebaTecnicaAFP.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +31,7 @@ namespace PruebaTecnicaAFP
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ClinicaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("devConnection")));
+            services.AddScoped<IPacienteInterface, PacienteRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
