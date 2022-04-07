@@ -40,5 +40,30 @@ namespace PruebaTecnicaAFP.Controllers
                 return BadRequest(ex);
             }
         }
+        [HttpPut]
+        public async Task<ActionResult> modificarMedico([FromBody] Medico medico)
+        {
+            try
+            {
+                return Ok(await IMedico.modificarMedico(medico));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+        [HttpDelete]
+        [Route("{Id}")]
+        public bool deleteBook(int Id)
+        {
+            try
+            {
+                return IMedico.eliminarMedico(Id);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

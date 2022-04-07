@@ -8,5 +8,7 @@ namespace PruebaTecnicaAFP.Intefaces
     {
         Task<Medico> creatMedico(Medico medico);
         Task<List<Medico>> listarMedico();
+        Task<Medico> modificarMedico(Medico medico);
+        bool eliminarMedico(int ID);
     }
 }

@@ -40,5 +40,30 @@ namespace PruebaTecnicaAFP.Controllers
                 return BadRequest(ex);
             }
         }
+        [HttpPut]
+        public async Task<ActionResult> modificarPaciente([FromBody] Paciente paciente)
+        {
+            try
+            {
+                return Ok(await _Ipaciente.modificarPaciente(paciente));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+        [HttpDelete]
+        [Route("{Id}")]
+        public bool deleteBook(int Id)
+        {
+            try
+            {
+                return _Ipaciente.eliminarPaciente(Id);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }
