@@ -19,9 +19,10 @@ namespace PruebaTecnicaAFP.Repositories
         {
             try
             {
-                string spSQL = "EXEC [dbo].[SP_GUARDAR_MEDICO]  @Nombre";
+                string spSQL = "EXEC [dbo].[SP_GUARDAR_MEDICO]  @Nombre, @TipoID";
                 SqlParameter[] parameters = new SqlParameter[] {
                         new SqlParameter("@Nombre", SqlDbType.VarChar) { Value = medico.Nombre},
+                        new SqlParameter("@TipoID", SqlDbType.Int) { Value = medico.TipoID},
                  };
                 await _ctx.Database.ExecuteSqlRawAsync(spSQL, parameters);
                 return medico;
