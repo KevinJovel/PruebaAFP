@@ -16,25 +16,24 @@ namespace PruebaTecnicaAFP.Controllers
         {
             _Ipaciente = Ipaciente;
         }
-
-        [HttpGet]
-        public async Task<IActionResult> listarPacientes()
-        {
-            try
-            {
-                return Ok(await _Ipaciente.listarPacientes());
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
         [HttpPost]
         public async Task<ActionResult> crearPaciente([FromBody] Paciente paciente)
         {
             try
             {
                 return Ok(await _Ipaciente.creatPaciente(paciente));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> listarPacientes()
+        {
+            try
+            {
+                return Ok(await _Ipaciente.listarPacientes());
             }
             catch (Exception ex)
             {

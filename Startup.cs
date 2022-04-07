@@ -32,6 +32,7 @@ namespace PruebaTecnicaAFP
         {
             services.AddDbContext<ClinicaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("devConnection")));
             services.AddScoped<IPacienteInterface, PacienteRepository>();
+            services.AddScoped<IMedicoInterface, MedicoRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
